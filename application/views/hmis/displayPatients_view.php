@@ -33,7 +33,7 @@
                     <th>Visit_Date</th>
                     <th>Delete</th>
                     <th>Update</th>
-                    <th>Billing</th>
+                    <!-- <th>Billing</th> -->
                 </tr>
 
             </thead>
@@ -69,12 +69,12 @@
                     </form>
                   </td>";
 
-                            echo "<td>
-                    <form method='get' action='Billing/displayBill.php'>
-                        <input type='hidden' name='patient_id' value='" . htmlspecialchars($row["patient_id"]) . "'>
-                        <button type='submit'>Billing</button>
-                    </form>
-                  </td>";
+                //             echo "<td>
+                //     <form method='get' action='Billing/displayBill.php'>
+                //         <input type='hidden' name='patient_id' value='" . htmlspecialchars($row["patient_id"]) . "'>
+                //         <button type='submit'>Billing</button>
+                //     </form>
+                //   </td>";
                             echo "</tr>";
                             ?>
                         <?php endforeach; ?>

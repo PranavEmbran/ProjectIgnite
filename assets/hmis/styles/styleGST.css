@@ -1,0 +1,82 @@
+/* Reset some basic defaults */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+}
+
+/* Center the form */
+form {
+    width: 400px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Form heading */
+h1 {
+    text-align: center;
+    color: #2c3e50;
+}
+
+/* Labels and inputs */
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #333;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* Short inputs (like char13 etc.) */
+input[type="text"][style*="width: 3em"] {
+    width: 3em;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+/* Read-only fields */
+input[readonly] {
+    background-color: #f2f2f2;
+}
+
+/* Button */
+input[type="button"],
+input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    width: 100%;
+}
+
+/* input[type="button"]:hover {
+    background-color: #2980b9;
+} */
+
+input[type="button"]:hover,
+input[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* GSTIN validation result */
+#gstinLabel {
+    display: block;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
