@@ -10,10 +10,9 @@
 
 <body>
     <h1>GSTIN Validator</h1>
-    <form action="" method="POST">
+    <form action="<?= site_url('GstValidation/insertGSTIN') ?>" method="POST">
         <label for="state">State Code</label>
         <select name="stateid" id="state">
-            <option value="" disabled selected>Select State</option>
             <option value="" disabled selected>Select State</option>
             <option value="01">[01] JAMMU AND KASHMIR</option>
             <option value="02">[02] HIMACHAL PRADESH</option>
@@ -68,13 +67,13 @@
         <br><br>
 
         <label for="gstin">GSTIN</label>
-        <input type="text" id="gstin" name="fname" value="" required readonly>
+        <input type="text" id="gstin" name="gstinName" value="" maxlength="15" oninput="this.value = this.value.toUpperCase();" required>
         <label id="gstinLabel"></label>
 
         <input type="button" onclick="clearForm()" value="Clear">
         <br><br>
 
-        <input type="submit" value="Save">
+        <input type="submit" name="saveGSTIN" value="Save">
 
         <script>
             let stateSelect = document.getElementById("state");
@@ -108,10 +107,32 @@
                 }
 
             }
+
+            function fillFromGSTIN() {
+
+                    stateSelect.value = gstInput.value.substring(0, 2);
+                    panInput.value = gstInput.value.substring(2, 12);
+                    character13.value = gstInput.value.substring(12, 13);
+                    character15.value = gstInput.value.substring(14, 15);
+
+                                        let isValid = checksum(gstInput.value);
+                    console.log("Valid GSTIN? ", isValid);
+                    if (isValid === true) {
+                        // alert("Valid GSTIN? \n" + isValid + "\nVALID GSTIN");
+                        gstinCheckLabel.textContent = "✅ Valid GSTIN";
+                    }
+                    else {
+                        // alert("Valid GSTIN? \n" + isValid + "\nINVALID GSTIN");
+                        gstinCheckLabel.textContent = "❌ Invalid GSTIN";
+                    }
+                
+            }
+
             stateSelect.addEventListener('change', generateGSTIN);
             panInput.addEventListener('input', generateGSTIN);
             character13.addEventListener('input', generateGSTIN);
             character15.addEventListener('input', generateGSTIN);
+            gstInput.addEventListener('input', fillFromGSTIN);
 
             //from stackoverflow: https://stackoverflow.com/questions/2916539/concatenate-two-fields-to-display-in-dropdown-list 
             function checksum(g) {
