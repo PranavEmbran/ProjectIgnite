@@ -12,5 +12,15 @@ class gst_model extends CI_Model
         VALUES (?)";
         $this->db->query($sql, [$data['validGSTIN']]);
     }
+
+    public function display_valid_gstin()
+    {
+        $sql = "Select SL_ID, GSTIN from gstin_list";
+
+        $query = $this->db->query($sql);
+        return $query->result_array();
+
+        // return $this->db->query($sql);
+    }
 }
 ?>

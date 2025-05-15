@@ -67,13 +67,24 @@
         <br><br>
 
         <label for="gstin">GSTIN</label>
-        <input type="text" id="gstin" name="gstinName" value="" maxlength="15" oninput="this.value = this.value.toUpperCase();" required>
+        <input type="text" id="gstin" name="gstinName" value="" maxlength="15"
+            oninput="this.value = this.value.toUpperCase();" required>
         <label id="gstinLabel"></label>
 
         <input type="button" onclick="clearForm()" value="Clear">
         <br><br>
 
         <input type="submit" name="saveGSTIN" value="Save">
+        <br><br>
+
+        <input type="button" onclick="window.location.href='<?= site_url('GstValidation/displayGSTIN_List') ?>'" value="List GSTINs">
+       
+        <!-- <a href="<?= site_url('GstValidation/displayGSTIN_List') ?>" class="btn btn-primary">
+            List GSTINs
+        </a> -->
+
+
+        
 
         <script>
             let stateSelect = document.getElementById("state");
@@ -110,22 +121,22 @@
 
             function fillFromGSTIN() {
 
-                    stateSelect.value = gstInput.value.substring(0, 2);
-                    panInput.value = gstInput.value.substring(2, 12);
-                    character13.value = gstInput.value.substring(12, 13);
-                    character15.value = gstInput.value.substring(14, 15);
+                stateSelect.value = gstInput.value.substring(0, 2);
+                panInput.value = gstInput.value.substring(2, 12);
+                character13.value = gstInput.value.substring(12, 13);
+                character15.value = gstInput.value.substring(14, 15);
 
-                                        let isValid = checksum(gstInput.value);
-                    console.log("Valid GSTIN? ", isValid);
-                    if (isValid === true) {
-                        // alert("Valid GSTIN? \n" + isValid + "\nVALID GSTIN");
-                        gstinCheckLabel.textContent = "✅ Valid GSTIN";
-                    }
-                    else {
-                        // alert("Valid GSTIN? \n" + isValid + "\nINVALID GSTIN");
-                        gstinCheckLabel.textContent = "❌ Invalid GSTIN";
-                    }
-                
+                let isValid = checksum(gstInput.value);
+                console.log("Valid GSTIN? ", isValid);
+                if (isValid === true) {
+                    // alert("Valid GSTIN? \n" + isValid + "\nVALID GSTIN");
+                    gstinCheckLabel.textContent = "✅ Valid GSTIN";
+                }
+                else {
+                    // alert("Valid GSTIN? \n" + isValid + "\nINVALID GSTIN");
+                    gstinCheckLabel.textContent = "❌ Invalid GSTIN";
+                }
+
             }
 
             stateSelect.addEventListener('change', generateGSTIN);
