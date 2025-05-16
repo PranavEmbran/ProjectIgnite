@@ -32,6 +32,7 @@ class GstValidation extends CI_Controller
 
         $this->load->view("gst_view");
         $this->load->view("listGST_view", $data);
+        // redirect('GstValidation');
 
     }
 }
