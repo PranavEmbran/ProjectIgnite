@@ -12,8 +12,26 @@ class GstValidation extends CI_Controller
     public function index()
     {
         $this->load->view("gst_view");
+        // redirect(base_url('gstView/index.html'));
+
+
         // $this->load->view("listGST_view");
     }
+
+    // public function validateReactGstin()
+    // {
+    //     header("Access-Control-Allow-Origin: *");
+    //     header("Content-Type: application/json");
+
+    //     $data = json_decode(file_get_contents("php://input"), true);
+    //     $gstin = trim($data['gstin'] ?? '');
+
+    //     if (preg_match("/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/", $gstin)) {
+    //         echo json_encode(["message" => "✅ GSTIN is valid"]);
+    //     } else {
+    //         echo json_encode(["message" => "❌ Invalid GSTIN format"]);
+    //     }
+    // }
 
     public function insertGSTIN()
     {
