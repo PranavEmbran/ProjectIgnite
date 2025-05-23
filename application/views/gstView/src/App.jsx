@@ -2,27 +2,27 @@ import React, { useState, useEffect } from 'react';
 import '../../../../assets/hmis/styles/styleGST.css';
 
 function App() {
-const [stateCode, setStateCode] = useState('');
-const [pan, setPan] = useState('');
-const [char13, setChar13] = useState('');
-const [char15, setChar15] = useState('');
-const [gstin, setGstin] = useState('');
-const [isManual, setIsManual] = useState(false); // ⬅️ new
-const [validationMsg, setValidationMsg] = useState('');
+  const [stateCode, setStateCode] = useState('');
+  const [pan, setPan] = useState('');
+  const [char13, setChar13] = useState('');
+  const [char15, setChar15] = useState('');
+  const [gstin, setGstin] = useState('');
+  const [isManual, setIsManual] = useState(false); // ⬅️ new
+  const [validationMsg, setValidationMsg] = useState('');
 
 
   // Auto-generate GSTIN unless it was manually edited
-useEffect(() => {
+  useEffect(() => {
     const generated = stateCode.padStart(2, '0') + pan.toUpperCase() + char13.toUpperCase() + 'Z' + char15.toUpperCase();
 
     if (!isManual && generated.length === 15) {
-        setGstin(generated);
-        setValidationMsg(checksum(generated) ? '✅ Valid GSTIN' : '❌ Invalid GSTIN');
+      setGstin(generated);
+      setValidationMsg(checksum(generated) ? '✅ Valid GSTIN' : '❌ Invalid GSTIN');
     } else if (!isManual) {
-        setGstin('');
-        setValidationMsg('');
+      setGstin('');
+      setValidationMsg('');
     }
-}, [stateCode, pan, char13, char15]);
+  }, [stateCode, pan, char13, char15]);
 
 
   function checksum(g) {
@@ -51,7 +51,7 @@ useEffect(() => {
     setGstin('');
     setValidationMsg('');
     setIsManual(false);
-};
+  };
 
 
   const handleSubmit = (e) => {
@@ -132,29 +132,29 @@ useEffect(() => {
         <input style={{ width: '3em' }} type="text" id="char15" value={char15} maxLength={1} onChange={e => setChar15(e.target.value)} />
 
         <label htmlFor="gstin">GSTIN</label>
-<input
-    type="text"
-    id="gstin"
-    value={gstin}
-    maxLength={15}
-    onChange={(e) => {
-    const val = e.target.value.toUpperCase();
-    setIsManual(true);
-    setGstin(val);
-    setValidationMsg(checksum(val) ? '✅ Valid GSTIN' : '❌ Invalid GSTIN');
+        <input
+          type="text"
+          id="gstin"
+          value={gstin}
+          maxLength={15}
+          onChange={(e) => {
+            const val = e.target.value.toUpperCase();
+            setIsManual(true);
+            setGstin(val);
+            setValidationMsg(checksum(val) ? '✅ Valid GSTIN' : '❌ Invalid GSTIN');
 
-    // ⬇️ Sync parts from GSTIN if 15 characters
-    if (val.length === 15) {
-        setStateCode(val.substring(0, 2));
-        setPan(val.substring(2, 12));
-        setChar13(val.charAt(12));
-        setChar15(val.charAt(14));
-    }
+            // ⬇️ Sync parts from GSTIN if 15 characters
+            if (val.length === 15) {
+              setStateCode(val.substring(0, 2));
+              setPan(val.substring(2, 12));
+              setChar13(val.charAt(12));
+              setChar15(val.charAt(14));
+            }
 
 
-    }}
-/>
-{/* <label id="gstinLabel">{validationMsg}</label> */}
+          }}
+        />
+        {/* <label id="gstinLabel">{validationMsg}</label> */}
 
 
         <label id="gstinLabel">{validationMsg}</label>
@@ -166,7 +166,9 @@ useEffect(() => {
         <input
           type="button"
           value="List GSTINs"
-          onClick={() => window.location.href = "http://localhost/ProjectIgnite/index.php/GstValidation/displayGSTIN_List"}
+          // onClick={() => window.location.href = "http://localhost/ProjectIgnite/index.php/GstValidation/displayGSTIN_List"}
+          onClick={() => window.location.href = "http://192.168.50.242/ProjectIgnite/index.php/GstValidation/displayGSTIN_List"}
+
         />
       </form>
     </div>

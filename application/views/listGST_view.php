@@ -75,7 +75,12 @@
           onclick="window.location.href='<?= site_url('GstValidation') ?>'" data-bs-dismiss="modal"
           style="background-color: #3498db; width: 4em; margin: 0 auto; height: 2em;">Close</button> -->
 
-        <button type="button" class="btn btn-secondary"
+<!-- ***************************************************** -->
+<!-- ***************************************************** -->
+<!-- ***************************************************** -->
+
+
+        <!-- <button type="button" class="btn btn-secondary"
           onclick="window.location.href='<?= site_url('GstValidation') ?>'" data-bs-dismiss="modal" style="
     background-color: #3498db;
     width: 4em;
@@ -85,7 +90,23 @@
     align-items: center;
     justify-content: center;
     text-align: center;
+">Close</button> -->
+
+<button type="button" class="btn btn-secondary"
+          onclick="window.location.href='http://192.168.50.242:5173/'" data-bs-dismiss="modal" style="
+    background-color: #3498db;
+    width: 4em;
+    margin: 0.5em auto 0.5 auto;
+    height: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 ">Close</button>
+<!-- ***************************************************** -->
+<!-- ***************************************************** -->
+<!-- ***************************************************** -->
+
 
         <!-- <button type="button" class="btn btn-primary">Understood</button> -->
       </div>
