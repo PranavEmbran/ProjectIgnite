@@ -11,7 +11,11 @@ class Demo extends CI_Controller
 
     public function index()
     {
-        $this->load->view('Demo/Demo_view');
+        $this->read_dbData();
+        // $data['readData'] = $this->Demo_model->read_FromDB();
+        // $this->load->view('Demo/display_view', $data);
+
+        // $this->load->view('Demo/insert_view');
     }
 
     public function add_FormData()
@@ -23,8 +27,26 @@ class Demo extends CI_Controller
             ];
             $this->Demo_model->insert_FormData($data);
             redirect('Demo/Demo');
-
+        } else {
+            $this->load->view('Demo/insert_view');
         }
+    }
+
+    public function read_dbData()
+    {
+        $data['readData'] = $this->Demo_model->read_FromDB();
+        $this->load->view('Demo/display_view', $data);
+    }
+
+    public function deleteDataRow()
+    {
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            $data = [
+                'id' => $this->input->post('id')
+            ];
+        }
+        $this->Demo_model->delete_rowFromDB($data);
+        redirect('Demo/Demo');
     }
 }
 ?>

@@ -150,9 +150,6 @@ class DisplayPatients extends CI_Controller
             redirect('hmis/Login');
         }
 
-
-
-
     }
 
     public function filter()
