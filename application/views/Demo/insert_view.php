@@ -9,11 +9,12 @@
 
 <body>
     <h1>Demo MVC</h1>
-    <form action="<?php echo site_url('Demo/Demo/add_FormData'); ?>" method="POST">
-        <label for="name">Name:</label>
+    <!-- <form action="<?php // echo site_url('Demo/Demo/add_FormData'); ?>" method="POST"> --> <!-- good code -->
+    <form action='add_FormData' method="POST">
+        <label for="nameid">Name:</label>
         <input type="text" id="nameid" name="name">
         <br><br>
-        <label for="pass">Pass:</label>
+        <label for="passid">Pass:</label>
         <input type="text" id="passid" name="pass">
         <br><br>
         <input type="submit" name="submit" value="SUBMIT">

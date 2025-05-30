@@ -23,16 +23,26 @@
                         <td><?= $row['id']; ?></td>
                         <td><?= $row['Name']; ?></td>
                         <td><?= $row['pass']; ?></td>
-
                         <td>
                             <?php echo "<form action='Demo/deleteDataRow' method='post' onsubmit=\"return confirm('Are you sure?');\">
                             <input type='hidden' name='id' value='" . htmlspecialchars($row['id']) . "'>
                     <button type='submit' name='delete' title='Delete row' style='border: none; background: none; cursor: pointer;'>❌</button>
                 </form>"; ?>
+                <!--***** . htmlspecialchars($row['id']) .: This is dynamic PHP code that returns a value, and it's concatenated into the HTML string using .. *****-->
+
                             <!-- <button type='submit' name='delete'>Delete row</button> -->
                             <!-- <input type='submit' name='delete' value='Delete row'> -->
                             <!-- <input type='submit' name='delete' value='❌' style='border: none; background: none; cursor: pointer;'> -->
                             <!-- 🗑️ -->
+                        </td>
+                        <td>
+                            <form action="Demo/loadDataRowToForm" method="POST">
+                                <input type="hidden" name="id" value='<?php echo htmlspecialchars($row["id"]) ?>'>
+                                <input type="hidden" name="name" value='<?php echo htmlspecialchars($row["Name"]) ?>'>
+                                <input type="hidden" name="pass" value='<?php echo htmlspecialchars($row["pass"]) ?>'>
+                                <button type="submit" name="update" title="Update" style='border: none; background: none; cursor: pointer;'>✏️</button>
+                            </form>
+                            <?php echo "" ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>
