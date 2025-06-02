@@ -34,8 +34,8 @@ class Demo_model extends CI_Model
     {
         $sql = "UPDATE `demo` SET `Name` = ? WHERE `demo`.`id` = ?";
         $values = [$data['name'],$data['id']];
-        echo $data['name'];
-        echo $data['id'];
+        // echo $data['name'];
+        // echo $data['id'];
 
         $this->db->query($sql,$values);
     }

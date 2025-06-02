@@ -24,9 +24,14 @@ class Demo extends CI_Controller
         // Code to receive data from view form and assign each value to an associative array as key-value pairs.
         //******************************************************************************************* */
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            $Pass = $this->input->post('pass');
+            $hashedPass = password_hash($Pass,PASSWORD_DEFAULT);
+
             $data = [
                 'newname' => $this->input->post('name'),
-                'newpass' => $this->input->post('pass')
+                // 'newpass' => $this->input->post('pass') //used without hashing
+                'newpass' => $hashedPass
             ];
             $this->Demo_model->insert_FormData($data); /***** Passing the associative array to the model-function. *****/
             redirect('Demo/Demo');/***** Go back after insert. *****/
@@ -57,6 +62,9 @@ class Demo extends CI_Controller
         redirect('Demo/Demo');
     }
 
+    //*******************************************************************************************
+    // loadDataRowToForm() and updateDataRow() for update_view.
+    //*******************************************************************************************
     public function loadDataRowToForm()
     {
         $data["currentData"] = [];

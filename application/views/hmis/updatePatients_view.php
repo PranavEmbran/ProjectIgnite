@@ -36,8 +36,7 @@
         Discharge status:
         <select name="Discharge_status">
             <option value="Active" <?= $visit['Discharge_status'] == 'Active' ? 'selected' : '' ?>>Active</option>
-            <option value="Discharged" <?= $visit['Discharge_status'] == 'Discharged' ? 'selected' : '' ?>>Discharged
-            </option>
+            <option value="Discharged" <?= $visit['Discharge_status'] == 'Discharged' ? 'selected' : '' ?>>Discharged</option>
         </select><br><br>
 
         IP/OP:

@@ -21,7 +21,7 @@
         <br><br>
         <!-- <label for="passid">Pass: </label> -->
         <label for="">Pass: <?php echo htmlspecialchars($currentData['pass']) ?> </label>
-        <!-- <input type="text" id="passid" name="pass" value="<? php// echo htmlspecialchars($currentData['pass']) ?>"> -->
+        <!-- <input type="text" id="passid" name="pass" value="<?php// echo htmlspecialchars($currentData['pass']) ?>"> -->
          <br><br>
 
         <button type="submit">Update</button>
