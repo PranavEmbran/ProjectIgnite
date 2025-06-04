@@ -58,6 +58,10 @@
     <form action='Demo/add_FormData'>
         <input type="submit" value="Insert">
     </form>
+
+    <form action="Demo/sentEmail">
+        <input type="submit" value="Send Email">
+    </form>
 </body>
 
 </html>

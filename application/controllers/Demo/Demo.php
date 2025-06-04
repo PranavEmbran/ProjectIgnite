@@ -7,6 +7,11 @@ class Demo extends CI_Controller
         $this->load->helper('url');
 
         $this->load->model('Demo/Demo_model');
+
+        $this->load->library('Email');
+        $this->initializeEmail();
+        $this->sentEmail();
+
     }
 
     public function index()
@@ -16,6 +21,8 @@ class Demo extends CI_Controller
         // $this->load->view('Demo/display_view', $data);
 
         // $this->load->view('Demo/insert_view');
+
+
     }
 
     public function add_FormData()
@@ -26,7 +33,7 @@ class Demo extends CI_Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $Pass = $this->input->post('pass');
-            $hashedPass = password_hash($Pass,PASSWORD_DEFAULT);
+            $hashedPass = password_hash($Pass, PASSWORD_DEFAULT);
 
             $data = [
                 'newname' => $this->input->post('name'),
@@ -88,6 +95,59 @@ class Demo extends CI_Controller
             $this->Demo_model->update_RowDB($data);
             redirect('Demo/Demo');
         }
+    }
+
+    // #####################################################################################
+    // #####################################################################################
+    // #####################################################################################
+
+    // public function initializeEmail()
+    // {
+    //     // $config['protocol'] = 'sendmail';
+    //     $config['protocol'] = 'SMTP';
+    //     $config['mailpath'] = '/usr/sbin/sendmail';
+    //     $config['charset'] = 'iso-8859-1';
+    //     $config['wordwrap'] = TRUE;
+
+    //     $this->email->initialize($config);
+    // }
+    public function initializeEmail()
+    {
+        $config['protocol'] = 'smtp';
+        $config['smtp_host'] = 'smtp.gmail.com';
+        $config['smtp_port'] = 587;
+        $config['smtp_user'] = 'pranav.embran@hodo.in';
+        $config['smtp_pass'] = 'neqb rprf zfck axnp';    // Gmail App Password
+        // Security -> 2 step verification -> App passwords
+        $config['smtp_crypto'] = 'tls';                   // 🟢 Required for Gmail
+        $config['mailtype'] = 'html';
+        $config['charset'] = 'utf-8';
+        $config['newline'] = "\r\n";
+
+        $this->email->initialize($config);
+    }
+
+
+    public function sentEmail()
+    {
+        $this->load->library('email');
+
+        $this->email->from('pranav.embran@hodo.in', 'Pranav Embran S');
+        $this->email->to('pranav.embran@hodo.in');
+        // $this->email->cc('another@another-example.com');
+        // $this->email->bcc('them@their-example.com');
+
+        $this->email->subject('Email Test');
+        $this->email->message('<h3>Demo</h3> <br> Testing the <b> email </b> class.');
+
+        // $this->email->send();
+        if ($this->email->send()) {
+            echo "✅ Email sent successfully!";
+        } else {
+            echo "❌ Email failed to send.<br>";
+            echo $this->email->print_debugger();
+        }
+
     }
 }
 ?>

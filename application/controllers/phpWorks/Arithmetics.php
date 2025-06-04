@@ -6,7 +6,7 @@ class Arithmetics extends CI_Controller
         parent::__construct();
         $this->load->helper('url');
         // $this->load->library('myCalculator');
-        $this->load->library('MyCalculator', [], 'myCalculator'); // Alias to use camelCase
+        $this->load->library('MyCalculator', [], 'myCalculatorObj'); // Alias to use camelCase
         $this->load->library('session');
     }
 
@@ -30,13 +30,13 @@ class Arithmetics extends CI_Controller
             // $num1 = $this->input->post('number1');
             // $num2 = $this->input->post('number2');
             if ($oper == 1) {
-                $result = $this->myCalculator->sumOf($num1, $num2);
+                $result = $this->myCalculatorObj->sumOf($num1, $num2);
             } elseif ($oper == 2) {
-                $result = $this->myCalculator->diffOf($num1, $num2);
+                $result = $this->myCalculatorObj->diffOf($num1, $num2);
             } elseif ($oper == 3) {
-                $result = $this->myCalculator->prodOf($num1, $num2);
+                $result = $this->myCalculatorObj->prodOf($num1, $num2);
             } elseif ($oper == 4) {
-                $result = $this->myCalculator->division($num1, $num2);
+                $result = $this->myCalculatorObj->division($num1, $num2);
             }
         }
         // $this->load->view('phpWorks/Arithmetics_view', ['ans' => $result]);
