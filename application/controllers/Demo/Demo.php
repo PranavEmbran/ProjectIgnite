@@ -116,7 +116,7 @@ class Demo extends CI_Controller
         $config['protocol'] = 'smtp';
         $config['smtp_host'] = 'smtp.gmail.com';
         $config['smtp_port'] = 587;
-        $config['smtp_user'] = 'pranav.embran@hodo.in';
+        $config['smtp_user'] = 'dfgdg.qweqw@h0dc.in';
         $config['smtp_pass'] = 'nhjb rqwf zfth aqnp';    // Gmail App Password
         // Security -> 2 step verification -> App passwords
         $config['smtp_crypto'] = 'tls';                   // 🟢 Required for Gmail
